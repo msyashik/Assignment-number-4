@@ -132,6 +132,7 @@
     </section>
 
     <!--Thank You-->
+    <!--javascript codes-->
     <script>
         document.getElementById("afterBooking").style.display = "none";
         //calculate area
@@ -142,6 +143,7 @@
             const currentStringValueId2 = document.getElementById(id2).value;
             const currentIntValueId2 = parseInt(currentStringValueId2);
             //checking if the number of flights is less than zero or not
+            // if less than make it zero
             if(currentIntValueId1 < 0){
                 currentIntValueId1 = 0;
             }
