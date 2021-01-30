@@ -31,89 +31,100 @@
     <!--Booking Section-->
     <main class="main-content container">
         <div class="booking-form">
-            <h3>Booking Flights</h3>
-            <div class="input-group">
-                <label for="">Flying From</label>
-                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
-            </div>
-            <div class="input-group">
-                <label for="">Flying To</label>
-                <input class="inp-style" type="text" name="" placeholder="New York, United States">
-            </div>
-            <div class="inputs">
+            <div id="beforeBooking">
+                <h3>Booking Flights</h3>
                 <div class="input-group">
-                    <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                    <label for="">Flying From</label>
+                    <input class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
                 </div>
                 <div class="input-group">
-                    <label for="">Return</label>
-                    <input class="inp-style" type="date" name="">
+                    <label for="">Flying To</label>
+                    <input class="inp-style" type="text" name="" placeholder="New York, United States">
                 </div>
+                <div class="inputs">
+                    <div class="input-group">
+                        <label" for="">Departure</label>
+                        <input class="inp-style" type="date" name="">
+                    </div>
+                    <div class="input-group">
+                        <label for="">Return</label>
+                        <input class="inp-style" type="date" name="">
+                    </div>
+                </div>
+                <div class="input-group f-class flex">
+                    <div>
+                        <label for="">First Class ($150)</label>
+                        <input id="firstClassFlights" class="inp-style inp-width" type="number" name="" value=0>
+                    </div>
+                    <div class="styleFirstClassButton">
+                        <button onclick="calculateCost('firstClassFlights', 150, 1, 'econClassFlights', 100)" id="firstClassPlusButton" class="btn btn-default">
+                            <i class="fas fa-plus"></i>
+                          </button>
+                    </div>
+                    <div class="styleFirstClassButton">
+                        <button onclick="calculateCost('firstClassFlights', 150, -1, 'econClassFlights', 100)" id="firstClassMinusButton" class="btn btn-default">
+                            <i class="fas fa-minus"></i>
+                          </button>
+                    </div>
+                </div>
+                
+                <div class="input-group f-class">
+                    <div>
+                        <label for="">Economy ($100)</label>
+                        <input id="econClassFlights" class="inp-style inp-width" type="number" name="" value=0>
+                    </div>
+                    <div class="styleFirstClassButton">
+                        <button onclick="calculateCost('econClassFlights', 100, 1, 'firstClassFlights', 150)" id="econClassPlusButton" class="btn btn-default">
+                            <i class="fas fa-plus"></i>
+                          </button>
+                    </div>
+                    <div class="styleFirstClassButton">
+                        <button onclick="calculateCost('econClassFlights', 100, -1, 'firstClassFlights', 150)" id="econClassPlusButton" class="btn btn-default">
+                            <i class="fas fa-minus"></i>
+                          </button>
+                    </div>
+                </div>
+                <div class="calculations">
+                    <div class="amount">
+                        <div class="left">
+                            <p>Subtotal</p>
+                        </div>
+                        <div class="right">
+                            <p>$<span id="subtotalCost">0</span></p>
+                        </div>
+                    </div>
+    
+                    <div class="amount">
+                        <div class="left">
+                            <p>Charge 10% VAT</p>
+                        </div>
+                        <div class="right">
+                            <p>$<span id="taxCost">0</span></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="amount">
+                        <div class="left">
+                            <h4>Total</h4>
+                        </div>
+                        <div class="right">
+                            <p>$<span id="totalCost">0</span></p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="flightConfirm()" id="bookingButton" class="btn-style">Book Now</button>
             </div>
-            <div class="input-group f-class flex">
-                <div>
-                    <label for="">First Class ($150)</label>
-                    <input id="firstClassFlights" class="inp-style inp-width" type="number" name="" value=0>
-                </div>
-                <div class="styleFirstClassButton">
-                    <button onclick="calculateCost('firstClassFlights', 150, 1, 'econClassFlights', 100)" id="firstClassPlusButton" class="btn btn-default">
-                        <i class="fas fa-plus"></i>
-                      </button>
-                </div>
-                <div class="styleFirstClassButton">
-                    <button onclick="calculateCost('firstClassFlights', 150, -1, 'econClassFlights', 100)" id="firstClassMinusButton" class="btn btn-default">
-                        <i class="fas fa-minus"></i>
-                      </button>
-                </div>
+            <div id="afterBooking">
+                <h5 style="color: red">Congratulations! Your tickets are booked!</h5>
+                <h5>Details</h5>
+                <p>First Class Tickets         = <span id="showFirstClassTickets">0</span></p>
+                <p>First Class Tickets Cost    = <span id="showFirstClassTicketsCost">0</span></p>
+                <p>Economy Class Tickets       = <span id="showEconClassTickets">0</span></p>
+                <p>Economy Class Tickets Cost  = <span id="showEconClassTicketsCost">0</span></p>
+                <p>Tax  = <span id="showTax">0</span></p>
+                <p>Total Cost = <span id="showTotalCost" style="color:blue">0</span></p>
             </div>
-            
-            <div class="input-group f-class">
-                <div>
-                    <label for="">Economy ($100)</label>
-                    <input id="econClassFlights" class="inp-style inp-width" type="number" name="" value=0>
-                </div>
-                <div class="styleFirstClassButton">
-                    <button onclick="calculateCost('econClassFlights', 100, 1, 'firstClassFlights', 150)" id="econClassPlusButton" class="btn btn-default">
-                        <i class="fas fa-plus"></i>
-                      </button>
-                </div>
-                <div class="styleFirstClassButton">
-                    <button onclick="calculateCost('econClassFlights', 100, -1, 'firstClassFlights', 150)" id="econClassPlusButton" class="btn btn-default">
-                        <i class="fas fa-minus"></i>
-                      </button>
-                </div>
-            </div>
-            <div class="calculations">
-                <div class="amount">
-                    <div class="left">
-                        <p>Subtotal</p>
-                    </div>
-                    <div class="right">
-                        <p>$<span id="subtotalCost">0</span></p>
-                    </div>
-                </div>
-
-                <div class="amount">
-                    <div class="left">
-                        <p>Charge 10% VAT</p>
-                    </div>
-                    <div class="right">
-                        <p>$<span id="taxCost">0</span></p>
-                    </div>
-                </div>
-                <hr>
-                <div class="amount">
-                    <div class="left">
-                        <h4>Total</h4>
-                    </div>
-                    <div class="right">
-                        <p>$<span id="totalCost">0</span></p>
-                    </div>
-                </div>
-            </div>
-            <button onclick="flightConfirm()" id="bookingButton" class="btn-style">Book Now</button>
-        </div>
-
+        </div> 
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
@@ -122,26 +133,36 @@
 
     <!--Thank You-->
     <script>
+        document.getElementById("afterBooking").style.display = "none";
         //calculate area
         function calculateCost(id1, price1, val, id2, price2){
+            //calculate flights
             const currentStringValueId1 = document.getElementById(id1).value;
             const currentIntValueId1 = parseInt(currentStringValueId1) + val;
             const currentStringValueId2 = document.getElementById(id2).value;
             const currentIntValueId2 = parseInt(currentStringValueId2);
-            
+            //checking if the number of flights is less than zero or not
             if(currentIntValueId1 < 0){
                 currentIntValueId1 = 0;
             }
             if(currentIntValueId2 < 0){
                 currentIntValueId2 = 0;
             }
-
+            //calculate cost
             const currentTotalId1 = currentIntValueId1 * price1;
             const currentTotalId2 = currentIntValueId2 * price2;
             const subTotalCost = currentTotalId1 + currentTotalId2;
             const tax = (currentTotalId1 * 0.1) + (currentTotalId2 * 0.1);
             const totalCost = subTotalCost + tax;
             updateCost(id1, id2, currentIntValueId1, currentIntValueId2, subTotalCost, tax, totalCost);
+            //just saving the values this time so that i can show it to user when needed
+            if(id1 == "firstClassFlights")
+            {
+                showConfirmationToUser(currentIntValueId1, currentIntValueId2, currentTotalId1, currentTotalId2, tax,totalCost);
+            }
+            else{
+                showConfirmationToUser(currentIntValueId2, currentIntValueId1, currentTotalId2, currentTotalId1, tax,totalCost);
+            }
         }
         //update area
         function updateCost(id1, id2, currentIntValueId1, currentIntValueId2, subTotalCost, tax, totalCost){
@@ -152,9 +173,20 @@
             document.getElementById("totalCost").innerText = totalCost;
         }
         //flight confirmation
-        function flightConfirm(){
-            alert("Congratulations! You flight's have been booked.");
-            updateCost("firstClassFlights", "econClassFlights", 0,0,0,0,0);
+        function flightConfirm()
+        {
+            document.getElementById("beforeBooking").style.display = "none";
+            document.getElementById("afterBooking").style.display = "block";
+        }
+        //showing confirmation message to user
+        function showConfirmationToUser(firstClass, econClass, firstClassCost, econClassCost, taxCostOverall, totalGrandCost){
+            document.getElementById("showFirstClassTickets").innerText = firstClass;
+            document.getElementById("showEconClassTickets").innerText = econClass;
+            document.getElementById("showFirstClassTicketsCost").innerText = firstClassCost;
+            document.getElementById("showEconClassTicketsCost").innerText = econClassCost;
+            document.getElementById("showTax").innerText = taxCostOverall;
+            document.getElementById("showTotalCost").innerText = totalGrandCost;
+               
         }
     </script>
 </body>

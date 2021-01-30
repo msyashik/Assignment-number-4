@@ -9,7 +9,7 @@ body {
   font-family: "Roboto", sans-serif;
   background: url("images/bg.png");
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: cover;
   background-attachment: scroll;
   background-size: cover;
 }
